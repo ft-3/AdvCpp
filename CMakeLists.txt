@@ -8,8 +8,9 @@ include_directories(include)
 
 # Define sources and executable
 set(EXECUTABLE_NAME "blinker")
-#add_library(menu "src/menu.cpp")
+add_library(board "src/board.cpp")
 add_executable(${EXECUTABLE_NAME} src/main.cpp)
+target_link_libraries(${EXECUTABLE_NAME} board)
 
 
 # Detect and add SFML
