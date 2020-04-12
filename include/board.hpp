@@ -2,9 +2,10 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <string>
 using std::vector;
 
-const std::map<bool, char> vals = { {true, 'x'}, {false, 'o'} };
+const std::map<bool, std::string> vals = { {true, "⏺"}, {false, "○"} };
 
 struct Board {
 private:
@@ -19,6 +20,7 @@ private:
 public:
     Board(int, int);
     vector<vector<bool>> get_cells() const;
-    void step();
+    bool step();
+    void apply_figure(vector<vector<bool>>, int, int);
     friend std::ostream& operator<<(std::ostream&, Board&);
 };

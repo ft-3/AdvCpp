@@ -2,20 +2,15 @@
 cmake_minimum_required(VERSION 3.10)
 add_compile_options(-Wall -Wextra)
 
-project(Blinker)
+project(Game_of_life)
+set(EXECUTABLE_NAME "gol")
 
-include_directories(include)
+# Boost stuff
+find_package(Boost 1.67 COMPONENTS program_options REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
 
 # Define sources and executable
-set(EXECUTABLE_NAME "blinker")
+include_directories(include)
 add_library(board "src/board.cpp")
 add_executable(${EXECUTABLE_NAME} src/main.cpp)
-target_link_libraries(${EXECUTABLE_NAME} board)
-
-
-# Detect and add SFML
-#See the FindSFML.cmake file for additional details and instructions
-# find_package(SFML 2.5 COMPONENTS system graphics window REQUIRED)
-# if(SFML_FOUND)
-# target_link_libraries(${EXECUTABLE_NAME} menu canvas sfml-graphics sfml-window sfml-system)
-# endif()
+target_link_libraries(${EXECUTABLE_NAME} board ${Boost_LIBRARIES})
