@@ -48,6 +48,9 @@ public:
         auto y = std::string("");
         for (auto ch : line) {
             switch (ch) {
+            case ',':
+                state = NONE;
+                break;
             case 'y':
                 state = Y;
                 break;
@@ -83,16 +86,22 @@ public:
                     switch (ch) {
                     case '0': case '1': case '2': case '3': case '4':
                     case '5': case '6': case '7': case '8': case '9': 
-                        if (state == NONE) mult = std::string("");
-                        else {
+                        if (state == NONE) {
                             state = NUMBER;
+                            mult = std::string("") + ch;
+                            std::cout << mult << std::endl;
+                        }
+                        else {
                             mult += ch;
                         }
                     break;
                     case '$':
+                        if (state == NUMBER)
+                            for (auto i : range(0, std::stoi(mult)))
+                                cur_line++;
+                        else cur_line++;
                         state = NONE;
                         field = 0;
-                        cur_line++;
                     break;
                     case '!':
                         state = NONE;
@@ -101,10 +110,8 @@ public:
                     case 'b':
                         if (state == NUMBER) {
                             state = NONE;
-                            for (auto i : range(0, std::stoi(mult))) {
-                                figure[cur_line][i] = conv.at(ch);
-                                field += std::stoi(mult);
-                            }
+                            for (auto i : range(0, std::stoi(mult)))
+                                figure[cur_line][field++] = conv.at(ch);
                         }
                         else if (state == NONE)
                             figure[cur_line][field++] = conv.at(ch);

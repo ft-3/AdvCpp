@@ -40,6 +40,12 @@ int main(int ac, const char** av) {
         RleParser fig(vm["rle"].as<std::string>());
         try {
             fig.parse();
+            for (auto row : fig.get_figure()) {
+                for (auto cell : row) {
+                    std::cout << cell << " ";
+                }
+                std::cout << std::endl;
+            }
             auto x = vm.count("x") ? vm["x"].as<int>() : 0;
             auto y = vm.count("y") ? vm["y"].as<int>() : 0;
             game_board.apply_figure(fig.get_figure(), x, y);
