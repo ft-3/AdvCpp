@@ -9,5 +9,7 @@ To compile under linux or mac run:
 
 To compile under windows use the same procedure with appropriate commands for Powershell or CMD.
 
-[x] Week 1: Blinker
-[ ] Week 2: Glider
+[x] Week 1: Blinker  
+[x] Week 2: Glider  
+[x] Week 3: Copperhead  
+[ ] Week 4: GUI  
