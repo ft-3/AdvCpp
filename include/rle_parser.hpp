@@ -10,6 +10,7 @@ using util::lang::range;
 using std::vector;
 
 // RLE parser implemented as a state machine
+template<class T> void ignore( const T& ) { }
 
 enum states {
     // Skip current line
@@ -97,8 +98,10 @@ public:
                     break;
                     case '$':
                         if (state == NUMBER)
-                            for (auto i : range(0, std::stoi(mult)))
+                            for (auto i : range(0, std::stoi(mult))) {
+                                ignore(i);
                                 cur_line++;
+                            }
                         else cur_line++;
                         state = NONE;
                         field = 0;
@@ -110,8 +113,10 @@ public:
                     case 'b':
                         if (state == NUMBER) {
                             state = NONE;
-                            for (auto i : range(0, std::stoi(mult)))
+                            for (auto i : range(0, std::stoi(mult))) {
+                                ignore(i);
                                 figure[cur_line][field++] = conv.at(ch);
+                            }
                         }
                         else if (state == NONE)
                             figure[cur_line][field++] = conv.at(ch);
