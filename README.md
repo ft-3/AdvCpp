@@ -1,4 +1,4 @@
-AdvC++ Project - Conway's Game of Life
+# AdvC++ Project - Conway's Game of Life
 
 ---
 
