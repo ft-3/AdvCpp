@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <SFML/Window.hpp>
 #include "board.hpp"
 #include <boost/program_options.hpp>
 #include "rle_parser.hpp"
