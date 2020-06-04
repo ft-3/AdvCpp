@@ -90,7 +90,6 @@ public:
                         if (state == NONE) {
                             state = NUMBER;
                             mult = std::string("") + ch;
-                            std::cout << mult << std::endl;
                         }
                         else {
                             mult += ch;

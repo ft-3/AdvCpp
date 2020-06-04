@@ -17,11 +17,6 @@ Board::Board(int rows, int cols) : R(rows), C(cols) {
     cells = vector<vector<bool>>(rows);
     for (auto i : indices(cells))
         cells[i] = vector<bool>(cols);
-    /*
-    cells[2][2] = cells[2][3] = cells[2][4] = true;
-    cells[5][5] = cells[6][5] = cells[7][5] = 
-    cells[7][4] = cells[6][3] = true;
-    */
 }
 
 vector<vector<bool>> Board::get_cells() const { return cells; }
